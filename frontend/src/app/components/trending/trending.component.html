@@ -1,0 +1,20 @@
+<h5 class="cardHeading">TRENDING</h5>
+<ol class="scrollbar trending" id="cScroll">
+    <li *ngFor='let trend of trends' class="friend">
+        <div class="row">
+            <img src={{trend.image}} />
+            <strong>{{trend.title}}</strong>
+        </div>
+        <blockquote> {{trend.discription}} </blockquote>
+        <div class="flex_container">
+            <div class="trend_like">
+                <a href=""><i class="material-icons md-18 thumb">thumb_up</i> </a>
+                <p> &nbsp; 100 </p>
+            </div>
+            <div class="trend_like">
+                <a href=""><i class="material-icons md-18 views">visibility</i></a>
+                <p> &nbsp; 100 </p>
+            </div>
+        </div>
+    </li>
+</ol>

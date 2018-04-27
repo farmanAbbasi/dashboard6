@@ -1,0 +1,101 @@
+.friend {
+    border-bottom: 1px solid #e7ebee;
+    //position: relative;
+}
+
+.friend:hover {
+    background: #f1f4f6;
+    cursor: pointer;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 5% !important;
+    margin: 5px;
+    float: left;
+}
+
+.friend strong {
+    font-weight: 600;
+    font-size: 15px;
+    color: #597a96;
+    margin-top: 4%;
+}
+
+.friend span {
+    font-size: 13px;
+    font-weight: 400;
+    color: #aab8c2;
+}
+
+.contact_icon {
+    color: #7e7a96;
+}
+
+.cardHeading {
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 15px;
+    font-weight: lighter;
+    color: #a4abb3 !important;
+    background-color: #f8f9fa !important;
+    border-bottom: 1px solid #e7ebee;
+    /* font-family: "Exo"; */
+}
+
+.trending {
+    list-style: none;
+    padding-left: 0px;
+    height: 91% !important;
+}
+
+blockquote {
+    font-size: 11px;
+    margin: 0%;
+    line-height: 1.45;
+    position: relative;
+    color: #6b6969 !important;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.row {
+    margin: 0%;
+}
+
+.flex_container {
+    display: flex;
+    justify-content: space-around !important;
+    padding-top: 3%;
+    flex-direction: row !important;
+}
+
+.trend_like {
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+}
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.thumb {
+    color: #2196F3 !important;
+}
+
+.views {
+    color: #4CAF50 !important;
+}
+
+.dis p {
+    word-break: break-all;
+}
+
+p {
+    color: #aab8c2cc;
+}

@@ -1,0 +1,22 @@
+.footer {
+    width:100%;
+    position: absolute;
+    bottom: 0;
+    height: auto;
+    background-color: rgba(210, 219, 225, 0.54);
+    text-align: center;
+    display: inline-table;
+    padding: 5px;
+}
+.footer p{
+    display: table-cell;
+    vertical-align: middle;
+    color: #5e6063 !important;
+    font-size: 0.85em;
+    font-family: 'Exo';
+}
+.heart{
+    width: 1.3em;
+    opacity: 0.6;
+    color: rgba(146, 13, 13, 0.71);
+}

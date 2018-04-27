@@ -1,0 +1,33 @@
+{
+  "name": "tekone",
+  "version": "1.0.0",
+  "description": "api_layer",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ashok Reddy K L",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/cli": "^1.7.3",
+    "atob": "^2.0.3",
+    "azure-ad-jwt": "^1.1.0",
+    "azure-jwt-verify": "^1.0.0",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "jsonfile": "^4.0.0",
+    "jsonwebtoken": "^8.2.0",
+    "lint": "^1.1.2",
+    "mongoose": "^5.0.7",
+    "npm": "^5.8.0",
+    "parse-bearer-token": "0.0.1",
+    "passport": "^0.4.0",
+    "passport-azure-ad": "^3.0.12",
+    "passport-azure-ad-oauth2": "0.0.4",
+    "passport-oauth2-password-grant": "0.0.4",
+    "socket.io": "^2.1.0",
+    "tslint": "^5.9.1"
+  }
+}

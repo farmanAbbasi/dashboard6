@@ -1,0 +1,130 @@
+.textEditor::placeholder {
+    color: gray;
+}
+
+#pollBtn {
+    margin-top: 12px;
+}
+
+.textEditor {
+    background: transparent;
+    padding: 4px;
+    font-size: 14px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    outline: none !important;
+    resize: none;
+    padding: 8px;
+}
+
+#toggle {
+    color: gray;
+}
+
+#rad {
+    border: none;
+    margin: 10px;
+}
+
+.options {
+    padding: 4px;
+    display: flex;
+    font-size: 14px;
+    margin-bottom: 4px;
+    height: 30px;
+    width: 80% !important;
+    outline-color: #60BDF6;
+}
+
+#opt {
+    border: 1px solid #CCD6DD;
+    border-radius: 3px;
+}
+
+#fourthoption {
+    margin-bottom: 10px;
+}
+
+.options::placeholder {
+    color: gray; // #CFD8DF
+    font-size: 14px;
+}
+
+.btn3 {
+    font-size: 14px;
+    border: none;
+    margin-left: 30px !important;
+    margin-bottom: 8px;
+    background-color: transparent;
+    color: #3BADF3;
+    outline: none !important;
+    cursor: pointer;
+}
+
+.editorPanel {
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+.alignment {
+    margin-left: -1px;
+    margin-right: -2px;
+    display: grid;
+    grid-template-columns: 65% 35%;
+    border-top: 1px solid #D7DFE5;
+}
+
+.btn {
+    background-color: #88C6F3;
+    color: white;
+    border-radius: 100px;
+    float: right;
+}
+
+.btn:hover {
+    background-color: #1DA1F2;
+}
+
+.btn2 {
+    border: none;
+    background-color: transparent;
+    color: #D7DFE5;
+    outline: none !important;
+}
+
+.tagsDiv {
+    width: 100%;
+    border: none;
+    margin-top: -2px;
+}
+
+#tags {
+    padding: 2px;
+    width: 100%;
+    border: none;
+    border-top: 1px solid #CCD6DD;
+    outline: none;
+    font-size: 14px;
+}
+
+.button:hover {
+    cursor: pinter;
+}
+.checkboxes{
+  float:right
+}
+
+
+@media only screen and (max-width: 760px) {
+    .alignment {
+        margin-left: -1px;
+        margin-right: -2px;
+        display: grid;
+        grid-template-columns: auto;
+    }
+    .checkboxes {
+      
+        padding: 10px;
+    }
+}

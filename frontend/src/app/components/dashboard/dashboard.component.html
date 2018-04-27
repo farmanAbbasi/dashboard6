@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-xs-7 col-sm-6 col-lg-8">
+        <div class="weather-wrapper">
+            <div class="weather-card madrid">
+                <h3>Widgets</h3>
+                <p>Place your widgets here</p>
+            </div>
+            <div class="weather-card madrid">
+                    <h3>Widgets</h3>
+                    <p>Place your widgets here</p>
+                </div>
+            
+        </div>
+    </div>
+
+    <div class="col-xs-5 col-sm-6 col-lg-4" style="padding:0">
+        <!--Setting Cloumn count=1 according to width of components-->
+        <gridStack class="grid-stack-4" [w]="4" animate="true">
+            <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-no-resize="true" data-gs-height="5">
+                <div class="grid-stack-item-content">
+                    <app-most-connected></app-most-connected>
+                </div>
+            </div>
+            <div class="grid-stack-item" data-gs-x="0" data-gs-y="9" data-gs-width="4" data-gs-no-resize="true" data-gs-height="5">
+                <div class="grid-stack-item-content">
+                    <app-trending></app-trending>
+                </div>
+            </div>
+        </gridStack>
+    </div>
+</div>

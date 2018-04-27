@@ -1,0 +1,14 @@
+<h5 class="cardHeading">MOST CONNECTED</h5>
+<ol class="friends">
+    <li *ngFor="let person of people" class="friend">
+        <div class="row">
+            <img src={{person.person_image}} />
+            <p>
+                <strong>{{person.person_name}}</strong>
+                <span> {{person.person_description}}</span>
+            </p>
+            <div class="status available">
+            </div>
+        </div>
+    </li>
+</ol>

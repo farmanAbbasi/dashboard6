@@ -1,0 +1,9 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="wrapper">
+  <div [ngClass]="{'main':true, wrapped:true, 'backdrop':true,'wrap' : (isLoggedIn$ | async)===false}">
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

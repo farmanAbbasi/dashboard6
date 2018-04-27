@@ -1,0 +1,65 @@
+
+.textEditor::placeholder {
+    color: gray;
+}
+
+.textEditor {
+    background: transparent;
+    padding:4px;
+    font-size: 14px;
+    border:none;
+    border-radius: 10px;
+    width: 100%;
+    outline: none;
+    resize:none;
+    padding: 8px;
+    
+}
+
+.btn {
+    background-color: #88C6F3;
+    color: white;
+    border-radius: 100px;
+    float:right;
+    margin-top:12px;
+}
+
+.btn:hover {
+    background-color: #1DA1F2;
+}
+
+.tagsDiv {
+    width: 100%;
+    border: none;
+  }
+  
+
+ #tags{
+    padding:2px;
+    width: 100%;
+    border:none;
+    border-top: 1px solid #CCD6DD;
+    outline:none;
+    font-size:14px;
+    
+ }
+ #tags::placeholder{
+     color:#CFD8DF;
+     // #CFD8DF
+ }
+
+ .image{
+    position: absolute;
+}
+
+
+.button:hover{
+    cursor:pointer;
+}
+
+
+
+
+ 
+
+

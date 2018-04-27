@@ -1,0 +1,271 @@
+<div *ngIf="smallTextEditor" class="min-main">
+    <div>
+        <img *ngIf="!loaded" class="profilepicsmall" src="../../../assets/images/icons/header/default.png" />
+        <img [hidden]="!loaded" (load)="loaded = true" class="profilepicsmall" src="{{fetchUserImage(userId)}}" />
+    </div>
+    <div style="width:100%">
+        <textarea id="smallTextEditor" (click)="editorSizeChanger()" rows="1" cols="30" name="post" type="text" class="textEditor"
+            placeholder=" What's happening?"></textarea>
+    </div>
+</div>
+<div *ngIf="!smallTextEditor" class="main">
+    <div>
+        <img *ngIf="!loaded" (click)="editorSizeChanger()" class="profilepicsmall" src="../../../assets/images/icons/header/default.png"
+        />
+        <img [hidden]="!loaded" (click)="editorSizeChanger()" (load)="loaded = true" class="profilepicsmall" src="{{fetchUserImage(userId)}}"
+        />
+    </div>
+    <div class="elements">
+        <!--POST COMPONENT-->
+        <div class="editor" *ngIf="selectedPost === 'post'">
+            <app-post (addPost)="appendToPost($event)"></app-post>
+        </div>
+        <!--POLL COMPONENT-->
+        <div class="editor" *ngIf="selectedPost === 'poll'">
+            <app-poll (addPoll)="appendToPost($event)"></app-poll>
+        </div>
+        <!--QUESTION COMPONENT-->
+        <div class="editor" *ngIf="selectedPost === 'question'">
+            <app-question (addQuestion)="appendToPost($event)"></app-question>
+        </div>
+        <!-- Part of main forum page  -->
+        <div class="select-type">
+            <div>
+                <button [ngClass]="selectedPost==='post' ? 'enabledConnectButtons' : 'connectButtons'" #posttype value="post" (click)="selectChangeHandler(posttype.value)"
+                    matTooltip="Write post" matTooltipShowDelay="100" [matTooltipPosition]="position" matTooltipClass="primary-tooltip">
+                    <i id="ii" class="fas fa-pencil-alt"></i>
+
+                </button>
+                <button [ngClass]="selectedPost==='poll' ? 'enabledConnectButtons' : 'connectButtons'" #polltype class="connectButtons" value="poll"
+                    (click)="selectChangeHandler(polltype.value)" matTooltip="Add poll" matTooltipShowDelay="100" [matTooltipPosition]="position">
+                    <i id="ii" class="fas fa-chart-bar"></i>
+                </button>
+                <button [ngClass]="selectedPost==='question' ? 'enabledConnectButtons' : 'connectButtons'" #questiontype class="connectButtons"
+                    value="question" (click)="selectChangeHandler(questiontype.value)" matTooltip="Ask question" matTooltipShowDelay="100"
+                    [matTooltipPosition]="position">
+                    <i id="ii" class="far fa-question-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Forum data set -->
+<div infiniteScroll (scrolled)="onScroll()" [scrollWindow]="true">
+    <div class="list" *ngFor="let card of Posts; let i = index">
+        <!-- new post-->
+        <div class="poster">
+            <div class="post-line-1">
+                <div>
+                    <img *ngIf="!loaded" class="profilepic" src="../../../assets/images/icons/header/default.png" />
+                    <img [hidden]="!loaded" (load)="loaded = true" class="profilepic" src="{{fetchUserImage(card.userid)}}" />
+                </div>
+                <div class="metad">
+                    <a href="#" id="userName">{{fetchUserName(card.userid)}}</a>
+                    <div>
+                        <time id="time">{{dateFinder(dateFromObjectId(card._id))}}</time>
+                    </div>
+                </div>
+                <div *ngIf="card.userid===userId" class="dropdown">
+                    <!-- trigger button -->
+                    <button class="icon">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                    <!-- dropdown menu -->
+                    <ul class="dropdown-menu">
+                        <li>
+                            Edit
+                        </li>
+                        <li (click)="deletePost(card,i)">
+                            Delete
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="postData">
+                {{card.content}}
+            </p>
+            <div *ngIf="card.posttype=='poll'">
+                <div *ngFor='let choice of card.choices| keys ;let j = index'>
+                    <button (click)="voteButtonClick(card,j)" class="votebutton"> {{choice.value}}
+                        <div class="buttonColor" [ngStyle]="{'width':card.width[j]+'%','background-color':color[j]}" *ngIf="card.isuserpolledafter===true">
+                        </div>
+                        <div class="buttonColor" [ngStyle]="{'transition': 'width 2s','width':card.width[j]+'%','background-color':color[j]}" *ngIf="checkPollStat(card, card.isuserpolled)">
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="tag">
+                <span class="tagstags" *ngFor="let y of tagSeparated[i]">{{y}} </span>
+            </div>
+            <!-- comments -->
+            <div class="postt" *ngIf="(card.posttype!=='question')">
+                <div *ngIf="(currentselectedid==(card._id))">
+                    <ul class="children" [ngClass]="{'children-hidden': commentarray==null}">
+                        <li *ngFor="let y of commentarray; let j = index">
+                            <div class="post__author">
+                                <img src="{{fetchUserImage(y.userId)}}" alt="author">
+                                <div class="metad">
+                                    <a class="h6 post__author-name fn" href="#">{{fetchUserName(y.userId)}}</a>
+                                    <div class="post__date">
+                                        <time class="published" datetime="2017-03-24T18:18"> {{dateFinder(dateFromObjectId(y._id))}}</time>
+                                    </div>
+                                </div>
+                                <div *ngIf="y.userId===userId" class="dropdown">
+                                    <!-- trigger button -->
+                                    <button class="icon">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                    <!-- dropdown menu -->
+                                    <ul class="dropdown-menu">
+                                        <li class="child-fix" (click)="deleteComment(card,y._id,card._id,j)">
+                                            Delete
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <span class="commenttext">
+                                {{y.comment}}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- for question-->
+            <div class="postt" *ngIf="card.posttype == 'question'">
+                <div *ngIf="(currentselectedid == card._id)">
+                    <ul class="children" [ngClass]="{'children-hidden': answerarray==null}">
+                        <div *ngFor="let t of answerarray;let j=index">
+                            <li>
+                                <div class="post__author">
+                                    <img src="{{fetchUserImage(t.userId)}}" alt="author">
+                                    <div class="metad">
+                                        <a class="h6 post__author-name fn" href="#">{{fetchUserName(t.userId)}}</a>
+                                        <div class="post__date">
+                                            <time class="published" datetime="2017-03-24T18:18"> {{dateFinder(dateFromObjectId(t._id))}}</time>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="t.userId===userId" class="dropdown">
+                                        <!-- trigger button -->
+                                        <button class="icon">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                        <!-- dropdown menu -->
+                                        <ul class="dropdown-menu">
+                                            <li class="child-fix" (click)="deleteAnswer(card,t._id,card._id,j)">
+                                                Delete
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <span class="commenttext">
+                                    {{t.answer}}
+                                </span>
+                                <div class="vote-button">
+                                    <div class="vote-div pointer" [ngClass]="{'vote-disabled':t.upvoted===true}" (click)="voted(card._id,t,'up')">
+                                        <button class="upvotes" [ngClass]="{'vote-disabled':t.upvoted===true}" [disabled]="t.upvoted===true">
+                                            <i class="fas fa-arrow-up"></i>
+                                        </button>
+                                        <span class="text-upvotes" [ngClass]="{'vote-disabled':t.upvoted===true}">{{t.upvotes}} Upvotes</span>
+                                    </div>
+                                    <div class="vote-div pointer" [ngClass]="{'vote-disabled':t.downvoted===true}" (click)="voted(card._id,t,'down')">
+                                        <button class="downvotes" [ngClass]="{'vote-disabled':t.downvoted===true}" [disabled]="t.downvoted===true">
+                                            <i class="fas fa-arrow-down"></i>
+                                        </button>
+                                        <span class="text-downvotes" [ngClass]="{'vote-disabled':t.downvoted===true}">{{t.downvotes}} Downvotes</span>
+                                        <button *ngIf="(card.bestAnswer==null) && (card.userid===userId)" class="checkbtn" (click)="answerselected((t._id),(card._id),(card))">
+                                            <i class="fas fa-thumbtack"></i>
+                                        </button>
+                                    </div>
+                                    <button class="checkbtnbest" *ngIf="t._id==card.bestAnswer">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                </div>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <!-- commentbox -->
+            <div *ngIf="(currentselectedid==(card._id) )&& (card.posttype!=='question')" class="row">
+                <div *ngIf="!smallTextComment" class="example-full-width">
+                    <img *ngIf="!loaded" class="profilepic" src="../../../assets/images/icons/header/default.png" />
+                    <img [hidden]="!loaded" (load)="loaded = true" class="profilepic" src="{{fetchUserImage(userId)}}" />
+                    <div class="editor">
+                        <textarea class="form-control" id="cScroll" #toComment rows="4" cols="30" [(ngModel)]="comment" type="text" class="textEditorbig"
+                            placeholder="Leave a Comment........"></textarea>
+                        <div class="responsebuttons">
+                            <button class="postbtn share" (click)="submitComment((card))" matTooltip="Post Comment" matTooltipShowDelay="100" [matTooltipPosition]="position">
+                                <i class="fa fa-paper-plane share-icon"></i>
+                            </button>
+                            <button class="postbtn cancel" (click)="cancelComment()" matTooltip="Cancel" matTooltipShowDelay="100" [matTooltipPosition]="position">
+                                <i class="fas fa-times-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="smallTextComment" class="example-full-width">
+                    <div class="postbox">
+                        <img *ngIf="!loaded" class="profilepic" src="../../../assets/images/icons/header/default.png" />
+                        <img [hidden]="!loaded" (load)="loaded = true" class="profilepic" src="{{fetchUserImage(userId)}}" />
+                        <textarea class="form-control" id="cScroll" (click)="commentSizeChanger();focusHere();" rows="1" cols="30" name="post" type="text"
+                            class="textEditor" placeholder="Leave a Comment........"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- if question -->
+            <div *ngIf="(currentselectedid==(card._id)) && (card.posttype=='question')" class="row">
+                <div *ngIf="!smallTextComment" class="example-full-width">
+                    <img *ngIf="!loaded" class="profilepic" src="../../../assets/images/icons/header/default.png" />
+                    <img [hidden]="!loaded" (load)="loaded = true" class="profilepic" src="{{fetchUserImage(userId)}}" />
+                    <div class="editor">
+                        <textarea class="form-control" id="cScroll" #toComment rows="4" cols="30" [(ngModel)]="answer" type="text" class="textEditorbig"
+                            placeholder="Leave an Answer........"></textarea>
+                        <div class="responsebuttons">
+                            <button class="postbtn share" (click)="submitResponse((card))" matTooltip="Post Answer" matTooltipShowDelay="100" [matTooltipPosition]="position">
+                                <i class="fa fa-paper-plane share-icon"></i>
+                            </button>
+                            <button class="postbtn cancel" (click)="cancelComment()" matTooltip="Cancel" matTooltipShowDelay="100" [matTooltipPosition]="position">
+                                <i class="fas fa-times-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="smallTextComment" class="example-full-width">
+                    <div class="postbox">
+                        <img *ngIf="!loaded" class="profilepic" src="../../../assets/images/icons/header/default.png" />
+                        <img [hidden]="!loaded" (load)="loaded = true" class="profilepic" src="{{fetchUserImage(userId)}}" />
+                        <textarea class="form-control" id="cScroll" (click)="commentSizeChanger();focusHere();" rows="1" cols="30" name="post" type="text"
+                            class="textEditor" placeholder="Leave an Answer........"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="statbox">
+                <div class="viewscount">
+                    <button class="like " (click)="liked(card)" *ngIf="card.isuserliked===false">
+                        <i class="far fa-thumbs-up"></i>
+                    </button>
+                    <button class="like" (click)="liked(card)" *ngIf="card.isuserliked===true">
+                        <i class="fas fa-thumbs-up "></i>
+                    </button>
+                    <span class="text-5">{{card.likes}}</span>
+                </div>
+                <div class="commentcount">
+                    <button class="comment" (click)="comments(card)" *ngIf="card.posttype !=='question'" [ngClass]="{'vote-disabled':currentselectedid==(card._id)}" >
+                        <i class="far fa-comment"></i>
+                    </button>
+                    <button class="comment" (click)="answers(card)" *ngIf="card.posttype =='question'">
+                        <i class="fa fa-reply"></i>
+                    </button>
+                    <span class="text-5">{{card.comments}}</span>
+                </div>
+                <div class="commentcount close-wrap">
+                    <button class="close" (click)="close()" *ngIf="(currentselectedid==(card._id))" >
+                        <i class="fas fa-times icon-wrap"></i>
+                    </button>
+                    <span class="text-5"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

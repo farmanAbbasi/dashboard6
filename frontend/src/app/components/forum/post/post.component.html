@@ -1,0 +1,11 @@
+<textarea id="cScroll" rows="3" cols="30" [(ngModel)]="post" autofocus name="post" type="text" class="textEditor" value="post"
+    placeholder=" What's happening?" #posttype></textarea>
+<div class="tagsDiv">
+    <tag-input [(ngModel)]='tags' [errorMessages]="errorMessages" [validators]="validators" id="tags" secondaryPlaceholder="Tags..." placeholder="+Tags..." [addOnBlur]='true' [blinkIfDupe]='true'
+        [maxItems]='5' [editable]='true' [modelAsStrings]='true' [animationDuration]="animationDuration" [separatorKeyCodes]="[32]"
+        (onTagEdited)="onTagEdited($event)" theme='minimal'>
+        <tag-input-dropdown [autocompleteObservable]='requestAutocompleteItems'>
+        </tag-input-dropdown>
+    </tag-input>
+</div>
+<button mat-button (click)="validationPost()" class="btn">Post</button>

@@ -1,0 +1,210 @@
+.navbar {
+    padding: 0.5%;
+    background-color: #f7f7f7;
+}
+
+.navigation {
+    padding-right: 0.5rem;
+    text-decoration: none;
+    color: #7c7c7d !important;
+    border-right: 1px solid #969798;
+}
+
+.dropdown-menu a:first-child {
+    border-top: none;
+}
+
+.nav-drop {
+    border: 1px solid rgba(177, 177, 177, 0.2);
+    background: #f8f9fa;
+    box-shadow: 1px 1px 16px rgba(128, 128, 128, 0.45);
+}
+
+.userProfileButton {
+    padding-top: 0.2rem;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: rgba(202, 208, 214, 0.21);
+}
+
+.nav-wrap {
+    position: absolute;
+    right: 1%;
+}
+
+.profile-button {
+    padding: 0;
+    color: #7c7c7d;
+    vertical-align: baseline;
+}
+
+.header-buttons {
+    display: inherit;
+    margin-right: 1rem;
+}
+
+.profile-button:focus {
+    box-shadow: none !important;
+}
+
+.user-name {
+    font-family: 'Quicksand';
+    color: #34343c;
+}
+
+.userImage {
+    width: 38px;
+    border-radius: 50px;
+}
+
+.logo-text {
+    padding: 0 1.25rem;
+    font-size: 1.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    font-family: 'Exo';
+    color: #7c7c7d;
+}
+
+#top-navbar {
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.16);
+}
+
+.navbar-brand {
+    width: 16%;
+}
+
+#logo-img {
+    max-width: 185px;
+}
+
+.dropdown-menu {
+    margin-top: 25px;
+    padding: 0px;
+    z-index: 5;
+}
+
+.dropdown-menu:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #f8f9fa transparent;
+    top: -20px;
+    right: 10px;
+}
+
+@media (max-width: 576px) {
+    .logo-text {
+        visibility: hidden;
+    }
+    .user-name {
+        display: none;
+    }
+}
+
+.dropdown-color {
+    color: #7c7c7d;
+    border-top: 1px solid #e6ecf5;
+    background-color: white;
+    font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: .812rem;
+    font-weight: 400;
+}
+
+.dropdown-color:hover {
+    background-color: #F8F9FA;
+}
+
+.nContainer {
+    width: 340px;
+    padding: 0px;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.notificationheader {
+    padding: 12px;
+    display: table;
+    width: 100%;
+    position: relative;
+    font-family: Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: .812rem;
+    background-color: #F8F9FA;
+    font-weight: 400;
+    color: #888da8;
+    text-transform: uppercase;
+}
+
+.userImage {
+    height: 35px;
+    border-radius: 50%;
+}
+
+#title {
+    position: absolute;
+    left: 10px;
+    bottom: 2px;
+}
+
+.image {
+    border-radius: 50%;
+}
+
+#message {
+    position: absolute;
+    right: 10px;
+    bottom: 2px;
+}
+
+a {
+    color: grey;
+    text-decoration: none;
+}
+
+a:hover {
+    color: orangered;
+    text-decoration: none;
+}
+
+.noticontent {
+    word-break: break-all;
+    vertical-align: middle;
+    text-align: center;
+    width: 100%;
+    padding-left: 20px;
+}
+
+.pwrap {
+    display: table;
+}
+
+.nContainerWrap {
+    padding: 20px;
+}
+
+.viewall {
+    background-color: #81cdfb;
+    color: white;
+    width: inherit;
+    padding: 20px;
+    border: none;
+    font-size: 14px;
+    display: block;
+    font-weight: 400;
+    border-bottom-left-radius: px;
+    border-bottom-right-radius: 5px;
+}
+
+.viewall:hover {
+    background-color: #32a4e8;
+}
+
+.custom-tool-tip-theme {
+    z-index: 5;
+    display: block
+}

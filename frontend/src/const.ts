@@ -1,0 +1,11 @@
+export const baseUrl = 'http://localhost:3000/';
+export const POST_BLANK = 'Enter a post';
+export const ERROR_MSG = 'Error';
+export const DONE = 'Done';
+export const POLL_BLANK = 'Enter a poll';
+export const POLL_OPTIONS_NEEDED = 'Enter atleast 2 poll options';
+export const POLL_UPLOADED = 'Poll uploaded';
+export const POST_UPLOADED = 'Post uploaded';
+export const TAG_BLANK = 'Add atleast one tag';
+export const COMMENT_UPLOADED = 'Comment uploaded';
+export const ENTER_COMMENT = 'Enter a comment';

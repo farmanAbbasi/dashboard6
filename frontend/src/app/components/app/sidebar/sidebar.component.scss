@@ -1,0 +1,115 @@
+#sidebar {
+    width: 250px;
+    position: fixed;
+    left: 0;
+    display: block;
+    height: 100%;
+    z-index: 999;
+    background: #f8f9fa;
+    color: #a4abb3;
+    transition: all 0.3s ease;
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.16);
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+.icon-space {
+    margin-right: 5px;
+}
+
+#sidebar ul.components {
+    padding: 50px 0;
+    margin-top:50px;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 5px;
+}
+
+#sidebar ul li a {
+    color: inherit;
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar ul li a:hover {
+    color: #898c90;
+    background: #fff;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar ul li a:focus {
+    text-decoration: none;
+    transition: all 0.3s;
+    background-color:white;
+    color: #898c90;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #898c90;
+    background: #f8f9fa;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+a[aria-expanded="false"]::before,
+a[aria-expanded="true"]::before {
+    content: '\f107';
+    display: block;
+    position: absolute;
+    right: 20px;
+    font-family: 'FontAwesome';
+    font-size: 1em;
+}
+
+a[aria-expanded="true"]::before {
+    content: '\f106';
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #f8f9fa;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.menu-item:first-child {
+    border-top: 1px solid #ebeef2;
+}
+
+.menu-item{
+    border-bottom: 1px solid #ebeef2;
+}
+
+@media (max-width: 768px) {
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #content {
+        width: 100%;
+    }
+    #content.active {
+        width: calc(100% - 250px);
+    }
+}

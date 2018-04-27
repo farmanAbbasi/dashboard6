@@ -1,0 +1,80 @@
+<nav *ngIf="isLoggedIn$ | async" class="navbar navbar-expand navbar-light fixed-top bg-light" id="top-navbar">
+  <a (click)="toggleSideBar()" class="pointer navigation">
+    <i class="fas fa-bars"></i>
+  </a>
+  <a class="navbar-brand">
+    <div class="logo-text">TEK
+      <span>one</span>
+    </div>
+
+  </a>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav  mr-auto nav-wrap">
+      <div class="header-buttons">
+        <li class="nav-item nav-link dropdown">
+          <button type="button" class="profile-button btn dropdown-toggle" id="langChange" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false" style="background-color:#f8f9fa">
+            <i class="fas fa-language fa-lg"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right dropdown-color nav-drop" aria-labelledby="langChange">
+            <a class="dropdown-item dropdown-color pointer" (click)="changeLanguage('en')">
+              English</a>
+            <a class="dropdown-item dropdown-color pointer" (click)="changeLanguage('es')">
+              Spanish</a>
+          </div>
+        </li>
+        <li class="nav-item nav-link dropdown">
+          <button type="button" class="profile-button btn dropdown-toggle" id="notifications" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false" style="background-color:#f8f9fa">
+            <i class="fas fa-bell"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right dropdown-color nav-drop" aria-labelledby="notifications">
+            <ul class="nContainer" id="cScroll">
+              <div class="notificationheader">
+                <div id="title">
+                  Notifications
+                </div>
+                <div id="message">
+                  <a  href="#" style="padding: 15px"><i class="fas fa-wrench"></i></a>
+                  <a  href="#" style="margin-right:5px"><i class="far fa-envelope-open"></i></a>
+                </div>
+              </div>
+              <li class="dropdown-color pointer nContainerWrap" *ngFor="let message of messages">
+                <div class="pwrap">
+                    <img class="userImage" src="http://s3.amazonaws.com/nvest/Blank_Club_Website_Avatar_Gray.jpg">
+                      <span class="noticontent">
+                        {{message.text.comment}}</span>
+                </div>
+              </li>
+            </ul>
+            <div class="viewall">
+                <span style="margin-left:80px;font-weight:bold">View all notifications</span>
+              </div>
+          </div>
+        </li>
+        <a (click)="toggleSearch()" id="icon-notif" class="pointer nav-link">
+          <i class="fas fa-search"></i>
+        </a>
+      </div>
+      <li class="nav-item dropdown userProfileButton">
+        <button type="button" class="profile-button btn dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false" style="background-color:#f8f9fa">
+          <span class="user-name">{{userDisplayName}}</span>
+          <img *ngIf="!loaded" class="userImage" src="../../../assets/images/icons/header/default.png" />
+          <img [hidden]="!loaded" (load)="loaded = true" class="userImage" [src]="userImage" />
+        </button>
+        <div class="dropdown-menu dropdown-menu-right dropdown-color nav-drop" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item dropdown-color" href="#">
+            <i class="far fa-user" style="color: #7c7c7d;"></i> View Profile</a>
+          <a class="dropdown-item dropdown-color" href="#">
+            <i class="far fa-question-circle" style="color: #7c7c7d"></i> Help</a>
+          <a class="dropdown-item dropdown-color" href="#">
+            <!-- check the margin-left value given -->
+            <i class="fas fa-exclamation" style="margin-left:4px; color: #7c7c7d"></i> &nbsp;Console</a>
+          <a (click)="userLogout()" class="dropdown-item dropdown-color pointer">
+            <i class="fas fa-sign-out-alt" style="color: #7c7c7d"></i> Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,40 @@
+<nav *ngIf="isLoggedIn$ | async" id="sidebar">
+  <ul class="list-unstyled components">
+    <li class="menu-item">
+      <a routerLink="dashboard">
+        <i class="fab fa-slack-hash fa-lg icon-space"></i>
+        <span class="d-md-inline" [innerHTML]="'Dashboard' | translate"> </span>
+      </a>
+    </li>
+    <li class="menu-item">
+      <a routerLink="forum">
+        <i class="fab fa-wpforms fa-lg icon-space"></i>
+        <span class="d-md-inline" [innerHTML]="'Forum' | translate"> </span>
+      </a>
+
+    </li>
+    <li class="menu-item">
+      <a href="#">
+        <i class="fas fa-users"></i>
+        <span class="d-md-inline" [innerHTML]="'Groups' | translate"> </span>
+      </a>
+    </li>
+    <li class="menu-item">
+      <a href="#">
+        <i class="far fa-building"></i>
+        <span class="d-md-inline" [innerHTML]="'Department' | translate"> </span>
+      </a>
+    </li>
+    <li class="menu-item">
+      <a href="#">
+        <i class="fas fa-user"></i>
+        <span class="d-md-inline" [innerHTML]="'People' | translate"> </span>
+      </a>
+    </li>
+
+    <app-footer></app-footer>
+
+
+  </ul>
+
+</nav>

@@ -1,0 +1,54 @@
+<div class="search" (keyup.esc)="closeSearch()">
+    <div class="upperStack">
+        <button (click)="toggleSearch()">
+            <i style="color: #808a94;" class="fas fa-times fa-sm"></i>
+        </button>
+        <div>
+            <form class="form" (keyup.enter)="submitSearch(searchInput.value)">
+                <div class="form-content">
+                    <input class="search-input" [(ngModel)]="searchValue"  name="search-input" autocomplete="off" id="search-field" 
+                        placeholder="Search..." #searchInput/>
+                </div>
+                <span class="info">{{ hint }}</span>
+            </form>
+        </div>
+    </div>
+
+    <ul id="bScroll" class="sResults" *ngIf="results">
+        <li class="poster" *ngFor="let result of results">
+            <div class="post-line-1">
+                <div>
+                    <img class="profilepic" src="{{fetchUserImage(result.userid)}}">
+                </div>
+                <div class="metad">
+                    <span>
+                        <a id="userName">{{fetchUserName(result.userid)}}</a>
+                    </span>
+                    <div align="left">
+                        <time id="time">{{dateFinder(dateFromObjectId(result._id))}}</time>
+                    </div>
+                </div>
+            </div>
+            <p class="postData">{{result.content}}
+            </p>
+            <div *ngFor='let choice of result.choices| keys ;let j = index'>
+                <p class="votebutton"> {{choice.value}}
+                </p>
+            </div>
+            <div class="statbox">
+                <div class="viewscount">
+                    <div class="like">
+                        <i class="fas fa-thumbs-up"></i>
+                        <span class="text-5">{{result.likes}}</span>
+                    </div>
+                </div>
+                <div class="commmentcount">
+                    <div class="comment">
+                        <i class="far fa-comments"></i>
+                        <span class="text-5">{{result.comments}}</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
